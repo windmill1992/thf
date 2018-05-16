@@ -50,8 +50,9 @@ Page({
     })
   },
   call: function (e) {
-    let tel = e.currentTarget.dataset.mobile;
-		tel = '+00' + tel.substr(1);
+    // let tel = e.currentTarget.dataset.mobile;
+		// tel = '+00' + tel.substr(1);
+		let tel = '18989467603';
     wx.makePhoneCall({
       phoneNumber: tel
     });
