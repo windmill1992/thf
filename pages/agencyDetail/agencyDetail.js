@@ -12,7 +12,6 @@ Page({
       let city = wx.getStorageSync('city');
       this.setData({ id: options.id, city: city });
       this.getAgencyInfo();
-      this.phonePrefix();
     } else {
       wx.navigateBack()
     }
