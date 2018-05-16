@@ -1,0 +1,74 @@
+<!--pages/histories/histories.wxml-->
+<view class='container' wx:if='{{houseList.length > 0}}'>
+  <view class='house-list'>
+    <block wx:for='{{houseList}}' wx:key='id'>
+      <navigator url='/pages/buyHouseDetail/buyHouseDetail?hid={{item.id}}&mslno={{item.mslno}}' class='item flex' wx:if='{{item.to == "buy"}}'>
+        <view class='pic fshink0'>
+          <image src='{{item.listImage}}' mode='aspectFill' lazy-load='true'></image>
+          <view class='tag' wx:if='{{item.marketTime}}'>{{item.marketTime}}</view>
+        </view>
+        <view class='infos flex1 flex spb fcen'>
+          <view class='left {{unit == "A$" ? "au" : "fcol spb"}}'>
+            <view class='name'>{{item.beds}}卧{{item.baths}}卫·{{item.buildType}}</view>
+            <view class='city'><text>{{item.cityZH}}</text><text>{{item.city}}</text></view>
+            <block wx:if='{{unit != "A$"}}'>
+              <view wx:if='{{item.floorSize}}'><text>房屋面积：{{item.floorSize}}平方英尺</text></view>
+              <view wx:if='{{item.builtIn != ""}}'><text>{{item.builtIn}}年建造</text></view>
+            </block>
+            <block wx:else>
+              <view wx:if='{{item.listedDate != ""}}'><text>{{item.listedDate}}</text></view>
+            </block>
+          </view>
+          <view class='right' wx:if='{{unit != "A$"}}'>
+            <view class='price'>{{unit}}{{item.price}}</view>
+            <view class='date'>{{item.listedDate}}</view> 
+          </view>
+          <view class='right' wx:else>
+            <block wx:if='{{item.avaPrice}}'>
+              <view class='price'>约{{unit}}{{item.avaPrice}}</view>
+              <view class='date'>({{item.priceMin}}~{{item.priceMax}})</view> 
+            </block>
+            <block wx:else>
+              <view class='price' wx:if='{{item.price != 0}}'>{{unit}}{{item.price}}</view>
+              <view class='price no-price' wx:else>咨询经纪</view>
+            </block>
+          </view>
+        </view>
+      </navigator>
+      <navigator url='/pages/rentHouseDetail/rentHouseDetail?hid={{item.id}}&mslno={{item.mslno}}' class='item flex' wx:else>
+        <view class='pic fshink0'>
+          <image src='{{item.listImage}}' mode='aspectFill' lazy-load='true'></image>
+          <view class='tag' wx:if='{{item.marketTime}}'>{{item.marketTime}}</view>
+        </view>
+        <view class='infos flex1 flex spb fcen'>
+          <view class='left au'>
+            <view class='name'>{{item.beds}}卧{{item.baths}}卫·{{item.buildType}}</view>
+            <view class='city'><text>{{item.cityZH}}</text><text>{{item.city}}</text></view>
+            <block wx:if='{{unit != "A$"}}'>
+              <view wx:if='{{item.floorSize}}'><text>房屋面积：{{item.floorSize}}平方英尺</text></view>
+              <view wx:if='{{item.builtIn != ""}}'><text>{{item.builtIn}}年建造</text></view>
+            </block>
+            <block wx:else>
+              <view wx:if='{{item.listedDate != ""}}'><text>{{item.listedDate}}</text></view>
+            </block>
+          </view>
+          <view class='right' wx:if='{{unit != "A$"}}'>
+            <view class='price'>{{unit}}{{item.price}}/月</view>
+            <view class='date'>{{item.listedDate}}</view> 
+          </view>
+          <view class='right' wx:else>
+            <block wx:if='{{item.avaPrice}}'>
+              <view class='price'>约{{unit}}{{item.avaPrice}}/月</view>
+              <view class='date'>({{item.priceMin}}~{{item.priceMax}})</view> 
+            </block>
+            <block wx:else>
+              <view class='price' wx:if='{{item.price != 0}}'>{{unit}}{{item.price}}/月</view>
+              <view class='price no-price' wx:else>咨询经纪</view>
+            </block>
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>
+<view wx:else class='no-data'>{{city}}暂无浏览数据...</view>

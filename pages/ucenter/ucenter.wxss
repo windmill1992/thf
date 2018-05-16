@@ -1,0 +1,99 @@
+/* pages/ucenter/ucenter.wxss */
+
+page {
+  height: 100%;
+  background: #f5f5f5;
+}
+
+.container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.head {
+  text-align: center;
+  padding-top: 40rpx;
+  padding-bottom: 50rpx;
+  height: 400rpx;
+  box-sizing: border-box;
+  background: #ffa200;
+}
+
+.head image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 100%;
+  margin-bottom: 20rpx;
+  border: 9rpx solid #fff;
+}
+
+.head .nick {
+  font-size: 30rpx;
+  color: #fff;
+  font-family: 'PingFangSC-Medium';
+}
+
+.head .login-btn {
+  display: inline-block;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 45rpx;
+  background: none;
+  color: #fff;
+}
+
+.body {
+  padding: 0 60rpx;
+  margin-top: -80rpx;
+}
+
+.body .menu {
+  height: 620rpx;
+  padding: 50rpx 0;
+  box-shadow: 4rpx 4rpx 10rpx rgba(0, 0, 0, 0.08);
+  border-radius: 10rpx;
+  background: #fff;
+}
+
+.menu .li {
+  padding: 0 60rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  color: #666;
+  font-family: 'PingFangSC-Medium';
+}
+.menu .li .box{
+  border-bottom: 1px solid #f3f3f3;
+}
+.menu .btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  margin: 0;
+  overflow: visible;
+}
+
+.menu .btn.button-hover {
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.menu .btn::after {
+  border: none;
+}
+
+.menu .li .txt {
+  font-size: 32rpx;
+  color: #20212a;
+  float: left;
+}
+
+.shadow {
+  position: fixed;
+  bottom: -2rpx;
+  left: 0;
+  right: 0;
+  height: 2rpx;
+  box-shadow: 0 -5rpx 10px rgba(0, 0, 0, 0.2);
+}

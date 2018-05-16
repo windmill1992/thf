@@ -1,0 +1,13 @@
+/* pages/histories/histories.wxss */
+@import '../common/houselist.wxss';
+
+.no-data {
+  color: #999;
+  font-size: 30rpx;
+  margin: 100rpx 0;
+  text-align: center;
+}
+
+.house-list .au .name, .house-list .au .city {
+  margin-bottom: 26rpx;
+}

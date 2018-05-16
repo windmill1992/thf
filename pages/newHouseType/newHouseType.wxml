@@ -1,0 +1,19 @@
+<!--pages/newHouseType/newHouseType.wxml-->
+<view class='container'>
+  <view class='line'></view>
+  <view class='list'>
+    <view class='item flex' wx:for='{{list}}' wx:key='floor'>
+      <view class='pic fshink0'>
+        <image src='{{item.image}}' wx:if='{{item.image != ""}}' mode='widthFix'></image>
+        <image src='../../img/default.png' wx:else mode='widthFix'></image>
+      </view>
+      <view class='info'>
+        <view class='name'>{{item.name}}</view>
+        <view class='txt'>室内面积：{{item.indoor_area}}平方英尺</view>
+        <view class='txt'>分布楼层：{{item.floors}}</view>
+        <view class='txt'>户型朝向：{{item.orientation}}</view>
+        <view class='price'>{{unit}}{{item.price}}</view>
+      </view>
+    </view>
+  </view>
+</view>

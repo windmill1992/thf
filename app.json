@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/selectCity/selectCity",
+    "pages/appInfo/appInfo",
+    "pages/chioceHouse/chioceHouse",
+    "pages/histories/histories",
+    "pages/ucenter/ucenter",
+    "pages/agency/agency",
+    "pages/agencyDetail/agencyDetail",
+    "pages/news/news",
+    "pages/newsDetail/newsDetail",
+    "pages/logs/logs",
+    "pages/concat/concat",
+    "pages/dlApp/dlApp",
+    "pages/rentHouse/rentHouse",
+    "pages/selectOptions/selectOptions",
+    "pages/buyHouseDetail/buyHouseDetail",
+    "pages/rentHouseDetail/rentHouseDetail",
+    "pages/newHouse/newHouse",
+    "pages/newHouseDetail/newHouseDetail",
+    "pages/newHouseInfo/newHouseInfo",
+    "pages/newHouseType/newHouseType"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "淘海房",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#333",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/home2.png",
+        "selectedIconPath": "img/home.png"
+      },
+      {
+        "pagePath": "pages/chioceHouse/chioceHouse",
+        "text": "精选房源",
+        "iconPath": "img/chioce2.png",
+        "selectedIconPath": "img/chioce.png"
+      },
+      {
+        "pagePath": "pages/ucenter/ucenter",
+        "text": "我",
+        "iconPath": "img/user2.png",
+        "selectedIconPath": "img/user.png"
+      }
+    ]
+  }
+}

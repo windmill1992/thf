@@ -1,0 +1,49 @@
+<!--pages/news/news.wxml-->
+<view class='container'>
+  <view class='n-hd'>
+    <view class='navs flex spb'>
+      <view class='nav-a {{tab == 0 ? "on":""}}' data-tab='0' data-type='1' bindtap='switchTab'>置业投资</view>
+      <view class='nav-a {{tab == 1 ? "on":""}}' data-tab='1' data-type='4' bindtap='switchTab'>移民留学</view>
+      <view class='nav-a {{tab == 2 ? "on":""}}' data-tab='2' data-type='5' bindtap='switchTab'>海外生活</view>
+      <view class='online' style='width: {{width}}px;left: {{left}}px'></view>
+    </view>
+  </view>
+  <view class='n-bd'>
+    <view class='banner'>
+      <swiper bindchange='bannerChange' autoplay circular style='height: 320rpx;'>
+        <swiper-item class='item' wx:for='{{bannerImgs}}' wx:key='id'>
+          <image src='{{item.imgUrl}}' mode='aspectFill' bindtap='navToDetail'></image>
+          <view class='title' bindtap='navToDetail'>{{item.title}}</view>
+        </swiper-item>
+      </swiper>
+      <view class='dots flex fcen'>
+        <view wx:for='{{bannerImgs}}' wx:key='dot' class='dot {{index==cur ? "on":""}}'></view>
+      </view>
+    </view>
+    <view class='news-list'>
+      <navigator url='/pages/newsDetail/newsDetail?newsId={{item.id}}' class='item' wx:for='{{newsList}}' wx:key='ids' >
+        <view class='wrapper flex'>
+          <view class='infos flex1 fcol spc'>
+            <view class='title'>{{item.title}}</view>
+            <view class='info flex spb'>
+              <view class='left flex'>
+                <view class='source' wx:if='{{item.source != "淘海房"}}'>{{item.source}}</view>
+                <view class='source self' wx:else>{{item.source}}原创</view>
+                <view class='date'>{{item.date}}</view>
+              </view>
+              <view class='num flex fcen'>
+                <image src='../../img/eye.png'></image>
+                <text>{{item.viewcount}}</text>
+              </view>
+            </view>
+          </view>
+          <view class='pic fshink0'>
+            <image src='{{item.imgUrl}}' mode='aspectFill' lazy-load='true'></image>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view class='loadmore' wx:if='{{!hasmore}}'>没有更多数据了</view>
+  </view>
+</view>
+<view class='tips' wx:if='{{toast.show}}'>{{toast.title}}</view>

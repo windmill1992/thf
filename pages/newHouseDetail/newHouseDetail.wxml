@@ -1,0 +1,129 @@
+<!--pages/newHouseDetail/newHouseDetail.wxml-->
+<view class='container'>
+  <view class='nhd-hd'>
+    <view class='swiper-wrapper'>
+      <swiper class='swiper' bindchange='getCur'>
+        <swiper-item class='item' wx:for='{{infos.images}}' wx:key='img'>
+          <image src='{{item}}' bindtap='previewImg' mode='aspectFill'></image>
+        </swiper-item>
+      </swiper>
+      <view class='page'><text>{{cur + 1}}</text>/{{infos.images.length}}</view>
+    </view>
+    <view class='infos'>
+      <view class='title'><block wx:if='{{infos.nameChinese}}'>{{infos.nameChinese}} </block>{{infos.nameEnglish}}</view>
+      <view class='info flex fcen'>
+        <view class='txt'>{{infos.buildType}}</view>
+        <view class='txt'>{{infos.cityZH}}</view>
+        <view class='txt'>{{infos.stateCN}}</view>
+      </view>
+      <view class='date' wx:if='{{infos.startSaleDate}}'>开盘时间：{{infos.startSaleDate}}</view>
+      <view class='price flex'>
+        <view class='txt1'>{{infos.price}}
+          <text class='unit'>{{unit}}元起</text>
+          <text class='cny'>(约¥{{infos.priceCNY}}起)</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='nhd-bd'>
+    <view class='navs flex'>
+      <view class='nav-item flex fcen spc' data-idx='0' bindtap='lookInfo'>
+        <image src='../../img/menu2.png' mode='widthFix'></image>
+        <view class='txt1'>楼盘详情</view>
+      </view>
+      <view class='nav-item flex fcen spc' data-idx='1' bindtap='lookInfo'>
+        <image src='../../img/wuye.png' mode='widthFix' style='width: 30rpx'></image>
+        <view class='txt2'>物业信息</view>
+      </view>
+      <view class='nav-item flex fcen spc' data-idx='2' bindtap='lookInfo'>
+        <image src='../../img/smap.png' mode='widthFix'></image>
+        <view class='txt1'>周边学区</view>
+      </view>
+    </view>
+    <view class='info-box'>
+      <view class='title'>楼盘概要</view>
+      <view class='info-list'>
+        <view class='li flex' wx:if='{{infos.mainFloorPlan}}'>
+          <view class='left fshink0'>主要户型：</view>
+          <view class='right flex1'>{{infos.mainFloorPlan}}</view>
+        </view>
+        <view class='li flex' wx:if='{{infos.developer}}'>
+          <view class='left fshink0'>楼开发商：</view>
+          <view class='right flex1'>{{infos.developer}}</view>
+        </view>
+        <view class='li flex' wx:if='{{infos.completeSaleDate}}'>
+          <view class='left fshink0'>交房日期：</view>
+          <view class='right flex1'>{{infos.completeSaleDate}}</view>
+        </view>
+        <view class='li flex' wx:if='{{infos.renoLevel}}'>
+          <view class='left fshink0'>装修标准：</view>
+          <view class='right flex1'>{{infos.renoLevel}}年</view>
+        </view>
+        <view class='li flex' wx:if='{{infos.surrounding}}'>
+          <view class='left fshink0'>周边配套：</view>
+          <view class='right flex1'>{{infos.surrounding}}</view>
+        </view>
+        <view class='li flex' wx:if='{{infos.address}}'>
+          <view class='left fshink0'>楼盘地址：</view>
+          <view class='right flex1'>{{infos.address}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='info-box'>
+      <view class='title flex spb fcen'>
+        <view>户型介绍</view>
+        <view class='more' bindtap='moreHouseType'>查看更多</view>
+      </view>
+      <view class='type-wrapper'>
+        <view class='house-type-list flex'>
+          <view class='item' data-idx='{{index}}' wx:for='{{infos.floorPlans}}' wx:key='plans'>
+            <view class='pic'>
+              <image wx:if='{{item.image != ""}}' src='{{item.image}}' mode='aspectFill'></image>
+              <image wx:else src='../../img/default.png'></image>
+              <view class='tag {{infos.stateCN == "售罄" ? "no":""}}'>{{infos.stateCN}}</view>
+            </view>
+            <view class='name'>{{item.name}}</view>
+            <view class='size'>{{item.indoor_area}}平方英尺</view>
+            <view class='price'>{{unit2}}{{item.price}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='info-box' wx:if='{{infos.imagesRecommend != null && infos.imagesRecommend.length > 0}}'>
+      <view class='img-list'>
+        <image src='{{item}}' class='img-item' mode='widthFix' wx:for='{{infos.imagesRecommend}}' wx:key='img'></image>
+      </view>
+    </view>
+    <view class='wrapper'>
+      <view class='titles'>相似房源</view>
+      <view class='house-list'>
+        <navigator url='/pages/newHouseDetail/newHouseDetail?hid={{item.id}}' class='item' hover-class='none' wx:for='{{houseList}}' wx:key='id' open-type='redirect'>
+          <view class='title'><block wx:if='{{item.nameChinese}}'>{{item.nameChinese}} </block>{{item.nameEnglish}}</view>
+          <view class='con flex'>
+            <view class='pic'>
+              <image src='{{item.listImage}}' mode='aspectFill'></image>
+            </view>
+            <view class='info fcol spb'>
+              <view class='top'>
+                <view class='sale' wx:if='{{item.startSaleDate}}'>开盘时间：{{item.startSaleDate}}</view>
+                <view class='city'>{{item.cityZH}} {{item.city}}</view>
+                <view class='price'>{{unit2}}{{item.price}}<text>起</text></view>
+              </view>
+              <view class='bot flex'>
+                <view class='tags tag1'>{{item.buildType}}</view>
+                <view class='tags tag2'>{{item.stateCN}}</view>
+                <view class='tags tag3'>{{item.renoLevel}}</view>
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class='nhd-ft flex'>
+    <navigator url='/pages/agency/agency' class='btn tel'>联系经纪看房</navigator>
+    <navigator url='/pages/concat/concat' class='btn wx'>微信咨询</navigator>
+  </view>
+</view>
+<view class='tips' wx:if='{{toast.show}}'>{{toast.title}}</view>

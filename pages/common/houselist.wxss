@@ -1,0 +1,83 @@
+.house-list {
+  background: #fff;
+}
+
+.house-list .item {
+  padding: 30rpx 20rpx;
+  border-bottom: 1px solid #f2f2f4;
+}
+
+.house-list .item:last-child {
+  border-bottom: none;
+}
+
+.house-list .item .pic {
+  position: relative;
+  width: 196rpx;
+  height: 156rpx;
+  margin-right: 16rpx;
+  overflow: hidden;
+  border-radius: 4rpx;
+}
+
+.house-list .item .pic image {
+  width: 100%;
+	height: 100%;
+  vertical-align: top
+}
+
+.house-list .item .pic .tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 36rpx;
+  line-height: 36rpx;
+  background: #fc6e21;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 0 10rpx;
+  border-bottom-right-radius: 18rpx;
+}
+
+.house-list .item .left {
+  line-height: 1;
+  flex: 0;
+  height: 156rpx;
+}
+
+.house-list .item .name {
+  font-size: 32rpx;
+  color: #000;
+}
+
+.house-list .item .left view{
+  max-width: 330rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.house-list .item .left text {
+  font-size: 24rpx;
+  color: #656565;
+  margin-right: 10rpx;
+}
+
+.house-list .item .right {
+  text-align: right;
+}
+
+.house-list .item .price {
+  font-size: 36rpx;
+  color: #fe0000;
+  white-space: nowrap
+}
+
+.house-list .item .no-price{
+  font-size: 26rpx;
+}
+
+.house-list .item .date {
+  color: #666;
+  font-size: 24rpx;
+}

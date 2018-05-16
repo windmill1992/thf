@@ -1,0 +1,149 @@
+.dialog-box, .dialog-box .mask {
+  position: fixed;
+  top: 86rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.dialog-box {
+  z-index: -10;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.dialog-box.show-1 {
+  z-index: 10;
+  opacity: 1;
+}
+
+.dialog-box .mask {
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 15;
+}
+
+.dialog-box .content {
+  position: absolute;
+  top: 20rpx;
+  left: 3%;
+  width: 94%;
+  border-radius: 10rpx;
+  background: #fff;
+  z-index: 20;
+  box-sizing: border-box;
+}
+
+.dialog-box .content .list {
+  max-height: 600rpx;
+  overflow-y: auto;
+  border-radius: 10rpx;
+}
+
+.dialog-box .content::before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 14rpx solid transparent;
+  border-right: 14rpx solid transparent;
+  border-bottom: 10rpx solid #fff;
+  position: absolute;
+  top: -8rpx;
+  left: 9%;
+  z-index: 30;
+}
+
+.dialog-box.box2 .content:before {
+  left: 38%;
+}
+
+.dialog-box.box3 .content::before {
+  left: 65%;
+}
+
+.dialog-box.box4 .content::before {
+  left: 90%;
+}
+
+.dialog-box .content .item {
+  font-size: 28rpx;
+  color: #1e1e1e;
+  padding: 0 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.dialog-box .content .item:last-child {
+  border-bottom: none;
+}
+
+.dialog-box .content .item .check {
+  margin: 39rpx 0;
+  display: none;
+}
+
+.dialog-box .content .item .check image {
+  width: 32rpx;
+  height: 21rpx;
+  vertical-align: top;
+}
+
+.dialog-box .content .item.on {
+  background: #f8f8f8;
+  color: #f14114;
+}
+
+.dialog-box .content .item.on .check {
+  display: block;
+}
+
+.dialog-box .side {
+  width: 50%;
+  border-right: 1px solid #f3f3f3;
+}
+
+.dialog-box .side:last-child {
+  border-right: none;
+}
+
+.dialog-box .side .li {
+  font-size: 26rpx;
+  color: #000;
+  padding: 26rpx;
+  border-bottom: 1px solid #f3f3f3;
+  white-space: nowrap;
+}
+
+.dialog-box .side .right {
+  width: 28rpx;
+  height: 28rpx;
+  border: 1px solid #fc6e21;
+  border-radius: 4rpx;
+}
+
+.dialog-box .side .right image {
+  width: 24rpx;
+  height: 16rpx;
+  vertical-align: top;
+  display: none;
+}
+
+.dialog-box .side .on .right image {
+  display: block;
+}
+
+.dialog-box .btn-box {
+  padding: 24rpx 50rpx;
+}
+
+.dialog-box .btn-box .btn {
+  color: #fff;
+  font-size: 28rpx;
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #fc6e21;
+  border-radius: 4rpx;
+}

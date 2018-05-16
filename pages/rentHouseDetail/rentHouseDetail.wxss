@@ -1,0 +1,11 @@
+/* pages/rentHouseDetail/rentHouseDetail.wxss */
+@import '../buyHouseDetail/buyHouseDetail.wxss';
+@import '../common/houselist.wxss';
+
+.bhd-hd .infos {
+  padding-bottom: 0;
+}
+
+.house-list .left .name, .house-list .left .city {
+  margin-bottom: 26rpx;
+}

@@ -1,0 +1,6 @@
+/* pages/rentHouse/rentHouse.wxss */
+@import '../chioceHouse/chioceHouse.wxss';
+
+.house-list .left .name, .house-list .left .city{
+  margin-bottom: 26rpx;
+}

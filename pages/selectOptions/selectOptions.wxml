@@ -1,0 +1,48 @@
+<!--pages/selectOptions/selectOptions.wxml-->
+<view class='container'>
+  <view class='wrapper'>
+    <view class='title'>上市时间</view>
+    <view class='list flex fwrap'>
+      <view class='item {{date == 0 ? "on":""}}' bindtap='selDate' data-date='0'>最近1周</view>
+      <view class='item {{date == 1 ? "on":""}}' bindtap='selDate' data-date='1'>1个月内</view>
+      <view class='item {{date == 2 ? "on":""}}' bindtap='selDate' data-date='2'>2个月内</view>
+    </view>
+  </view>
+  <view class='wrapper'>
+    <view class='title'>卧室</view>
+    <view class='list flex fwrap'>
+      <view class='item {{room[0] ? "on":""}}' bindtap='selRoom' data-room='1'>1</view>
+      <view class='item {{room[1] ? "on":""}}' bindtap='selRoom' data-room='2'>2</view>
+      <view class='item {{room[2] ? "on":""}}' bindtap='selRoom' data-room='3'>3</view>
+      <view class='item {{room[3] ? "on":""}}' bindtap='selRoom' data-room='4'>4</view>
+      <view class='item {{room[4] ? "on":""}}' bindtap='selRoom' data-room='5'>5以上</view>
+    </view>
+  </view>
+  <view class='wrapper'>
+    <view class='title'>房屋面积(平方英尺)</view>
+    <view class='list flex fwrap'>
+      <view class='item {{areaIdx[0] ? "on":""}}' bindtap='selArea' data-area='1'>500以下</view>
+      <view class='item {{areaIdx[1] ? "on":""}}' bindtap='selArea' data-area='2'>500-800</view>
+      <view class='item {{areaIdx[2] ? "on":""}}' bindtap='selArea' data-area='3'>800-1000</view>
+      <view class='item {{areaIdx[3] ? "on":""}}' bindtap='selArea' data-area='4'>1000-1500</view>
+      <view class='item {{areaIdx[4] ? "on":""}}' bindtap='selArea' data-area='5'>1500-2000</view>
+      <view class='item {{areaIdx[5] ? "on":""}}' bindtap='selArea' data-area='6'>2000-3000</view>
+      <view class='item {{areaIdx[6] ? "on":""}}' bindtap='selArea' data-area='7'>3000-5000</view>
+      <view class='item {{areaIdx[7] ? "on":""}}' bindtap='selArea' data-area='8'>5000以上</view>
+    </view>
+  </view>
+  <view class='wrapper'>
+    <view class='title'>排序</view>
+    <view class='list2 flex fwrap spb'>
+      <view class='item {{sort == "desc-1" ? "on":""}}' bindtap='selSort' data-sort='desc-1'>{{pagefrom}}由高到低</view>
+      <view class='item {{sort == "asc-1" ? "on":""}}' bindtap='selSort' data-sort='asc-1'>{{pagefrom}}由低到高</view>
+      <view class='item {{sort == "desc-2" ? "on":""}}' bindtap='selSort' data-sort='desc-2'>房屋面积由大到小</view>
+      <view class='item {{sort == "asc-2" ? "on":""}}' bindtap='selSort' data-sort='asc-2'>房屋面积由小到大</view>
+    </view>
+  </view>
+
+  <view class='btns flex fcen'>
+    <view class='btn reset' bindtap='reset'>重置</view>
+    <view class='btn sure' bindtap='sure'>确定</view>
+  </view>
+</view>

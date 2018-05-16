@@ -1,0 +1,143 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.6.0",
+	"appid": "wx43aaaa85c5ee9fcd",
+	"projectname": "taohaifang",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "selCity",
+					"pathName": "pages/selectCity/selectCity",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "app",
+					"pathName": "pages/appInfo/appInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "chioce",
+					"pathName": "pages/chioceHouse/chioceHouse",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "his",
+					"pathName": "pages/histories/histories",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "uc",
+					"pathName": "pages/ucenter/ucenter",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "agenDet",
+					"pathName": "pages/agencyDetail/agencyDetail",
+					"query": "id=2600"
+				},
+				{
+					"id": 6,
+					"name": "agen",
+					"pathName": "pages/agency/agency",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "news",
+					"pathName": "pages/news/news",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "concat",
+					"pathName": "pages/concat/concat",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "dlapp",
+					"pathName": "pages/dlApp/dlApp",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "rent",
+					"pathName": "pages/rentHouse/rentHouse",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "opt",
+					"pathName": "pages/selectOptions/selectOptions",
+					"query": "from=chioceHouse"
+				},
+				{
+					"id": 12,
+					"name": "buyhouse",
+					"pathName": "pages/buyHouseDetail/buyHouseDetail",
+					"query": "hid=5a5c7dbce63003d62444e5e8&mslno=R2231826"
+				},
+				{
+					"id": 13,
+					"name": "renthouse",
+					"pathName": "pages/rentHouseDetail/rentHouseDetail",
+					"query": "hid=5af410e5de5ca51278a3c6b4&mslno="
+				},
+				{
+					"id": -1,
+					"name": "newsDetail",
+					"pathName": "pages/newsDetail/newsDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "newHouse",
+					"pathName": "pages/newHouse/newHouse",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "newHouseDetail",
+					"pathName": "pages/newHouseDetail/newHouseDetail",
+					"query": "hid=5a5cefbbd9823c426bbc086e"
+				}
+			]
+		}
+	}
+}

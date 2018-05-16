@@ -1,0 +1,40 @@
+/* pages/dlApp/dlApp.wxss */
+
+page {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 1203rpx;
+  z-index: -1;
+}
+
+.wrapper {
+  margin-top: 613rpx;
+}
+
+.wrapper image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 40rpx;
+}
+
+.wrapper .txt1 {
+  font-size: 32rpx;
+  color: #ffa200;
+  font-weight: 600;
+  margin-bottom: 16rpx;
+}
+
+.wrapper .txt2 {
+  font-size: 24rpx;
+  color: #fff;
+  margin-bottom: 10rpx;
+}

@@ -1,0 +1,90 @@
+<!--pages/chioceHouse/chioceHouse.wxml-->
+<view class='container'>
+  <view class='filter flex spb'>
+    <view class='item' bindtap='select' data-type='area'>
+      <text class='down'>{{area}}</text>
+    </view>
+    <view class='item' bindtap='select' data-type='cate'>
+      <text class='down'>{{cate}}</text>
+    </view>
+    <view class='item' bindtap='select' data-type='price'>
+      <text class='down'>{{price}}</text>
+    </view>
+    <navigator url='/pages/selectOptions/selectOptions?from=buy' class='item' hover-class='none'>更多<image src='../../img/menu.png'></image></navigator>
+  </view>
+  <view class='house-list'>
+    <view data-id='{{item.id}}' data-mslno='{{item.mslno}}' data-idx='{{index}}' bindtap='navToDetail' class='item flex' wx:for='{{houseList}}' wx:key='id'>
+      <view class='pic fshink0'>
+        <image src='{{item.listImage}}' mode='aspectFill' lazy-load='true'></image>
+        <view class='tag' wx:if='{{item.marketTime}}'>{{item.marketTime}}</view>
+      </view>
+      <view class='infos flex1 flex spb fcen'>
+        <view class='left {{unit == "A$" ? "au" : "fcol spb"}}'>
+          <view class='name'>{{item.beds}}卧{{item.baths}}卫·{{item.buildType}}</view>
+          <view class='city'><text>{{item.cityZH}}</text><text>{{item.city}}</text></view>
+          <block wx:if='{{unit != "A$"}}'>
+            <view><text wx:if='{{item.floorSize}}'>房屋面积：{{item.floorSize}}平方英尺</text></view>
+            <view><text wx:if='{{item.builtIn}}'>{{item.builtIn}}年建造</text></view>
+          </block>
+          <block wx:else>
+            <view wx:if='{{item.listedDate}}'><text>{{item.listedDate}}</text></view>
+          </block>
+        </view>
+        <view class='right' wx:if='{{unit != "A$"}}'>
+          <view class='price'>{{unit}}{{item.price}}</view>
+          <view class='date'>{{item.listedDate}}</view> 
+        </view>
+        <view class='right' wx:else>
+          <block wx:if='{{item.avaPrice}}'>
+            <view class='price'>约{{unit}}{{item.avaPrice}}</view>
+            <view class='date'>({{item.priceMin}}~{{item.priceMax}})</view> 
+          </block>
+          <block wx:else>
+            <view class='price' wx:if='{{item.price != 0}}'>{{unit}}{{item.price}}</view>
+            <view class='price no-price' wx:else>咨询经纪</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='loadmore no' wx:if='{{!hasmore && !noData}}'>没有更多数据了</view>
+  <view class='loadmore no' wx:if='{{noData}}'>未查询到<block wx:if='{{lt == 1}}'>所在城市的</block>数据！</view>
+</view>
+<view class='dialog-box box1 {{box == "area" ? "show-1":""}}'>
+  <view class='mask' catchtouchend='hideDialog'></view>
+  <view class='content'>
+    <view class='list'>
+      <view class='item flex spb {{opts[0].sel == "" ? "on":""}}' catchtap='selOption' data-arg='' data-cn=''>
+        <view class='option'>不限</view>
+        <view class='check'><image src='../../img/check.png'></image></view>
+      </view>
+      <view class='item flex spb {{opts[0].sel == item.chineselng ? "on":""}}' catchtap='selOption' data-cn='{{item.chineselng}}' data-arg='{{item.englishlng}}' wx:for='{{cityList}}' wx:key='mslno'>
+        <view class='option'>{{item.chineselng}}({{item.englishlng}})</view>
+        <view class='check'><image src='../../img/check.png'></image></view>
+      </view>
+    </view>
+  </view>
+</view>
+ <view class='dialog-box box2 {{box == "cate" ? "show-1":""}}'>
+  <view class='mask' catchtouchend='hideDialog'></view>
+  <view class='content'>
+    <view class='list'>
+      <view class='item flex spb {{opts[1].sel == item.cn ? "on":""}}' catchtap='selOption' data-arg='{{item.id}}' data-cn='{{item.cn}}' wx:for='{{types}}' wx:key='type'>
+        <view class='option'>{{item.cn ? item.cn : '不限'}} <block wx:if='{{item.en}}'>({{item.en}})</block></view>
+        <view class='check'><image src='../../img/check.png'></image></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='dialog-box box3 {{box == "price" ? "show-1":""}}'>
+  <view class='mask' catchtouchend='hideDialog'></view>
+  <view class='content'>
+    <view class='list'>
+      <view class='item flex spb {{opts[2].sel == item.cn ? "on":""}}' catchtap='selOption' data-arg='{{item.area}}' data-cn='{{item.cn}}' wx:for='{{prices}}' wx:key='price'>
+        <view class='option'>{{item.cn ?item.cn : '不限'}}</view>
+        <view class='check'><image src='../../img/check.png'></image></view>
+      </view>
+    </view>
+  </view>
+</view> 
+<view class='tips' wx:if='{{toast.show}}'>{{toast.title}}</view>

@@ -1,0 +1,78 @@
+/* pages/newHouse/newHouse.wxss */
+@import '../common/houselist2.wxss';
+@import '../common/dialogBox.wxss';
+
+page {
+  min-height: 100%;
+  background: #f5f5f5;
+}
+
+.container {
+  height: 100%;
+  position: relative;
+  overflow: auto;
+}
+
+.down::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-right: 6rpx solid transparent;
+  border-left: 6rpx solid transparent;
+  border-top: 8rpx solid #c2c2c2;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate3d(0, -50%, 0);
+}
+
+.filter {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 26rpx 0;
+  background: #fff;
+  font-size: 28rpx;
+  color: #656565;
+  border-top: 1px solid #f5f5f5;
+  z-index: 9;
+}
+
+.filter .item {
+  padding: 0;
+  width: 27%;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  box-sizing: border-box;
+  flex: 1;
+  line-height: 1;
+}
+
+.filter .item text {
+  display: inline-block;
+  max-width: 70%;
+  padding-right: 20rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+.filter .item:last-child {
+  width: 19%;
+  border-right: none;
+}
+
+.filter .item image {
+  width: 5rpx;
+  height: 24rpx;
+  margin-left: 10rpx;
+  position: relative;
+  top: 2rpx;
+}
+
+.house-list {
+  margin-top: 108rpx;
+}
+

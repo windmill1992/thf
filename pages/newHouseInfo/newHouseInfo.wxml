@@ -1,0 +1,101 @@
+<!--pages/newHouseInfo/newHouseInfo.wxml-->
+<view class='container'>
+  <view class='line'></view>
+  <block wx:if='{{infos.index == 0}}'>
+    <view class='info-list'>
+      <view class='li flex'>
+        <view class='title'>楼开发商：</view>
+        <view class='txt'>{{infos.developer}}</view>
+      </view>
+      <view class='li flex'>
+        <view class='title'>楼盘社区</view>
+        <view class='txt'>{{infos.community}}</view>
+      </view>
+      <view class='li flex'>
+        <view class='title'>土地产权：</view>
+        <view class='txt'>{{infos.propertyRight}}</view>
+      </view>
+      <view class='li flex'>
+        <view class='title'>总楼层数：</view>
+        <view class='txt'>{{infos.totalFloors}}</view>
+      </view>
+      <view class='li flex'>
+        <view class='title'>建筑形态：</view>
+        <view class='txt'>{{infos.buildingForm}}</view>
+      </view>
+      <view class='li flex'>
+        <view class='title'>小区规模：</view>
+        <view class='txt'>{{infos.communityScale}}</view>
+      </view>
+      <view class='li flex'>
+        <view class='title'>主体朝向：</view>
+        <view class='txt'>{{infos.orientation}}</view>
+      </view>
+    </view>
+  </block>
+  <block wx:if='{{infos.index == 1}}'>
+    <view class='info-list'>
+      <view class='li flex'>
+        <view class='title'>物业公司：</view>
+        <view class='txt'>{{infos.manageTable.company}}</view>
+      </view>
+      <view class='li flex'>
+        <view class='title'>物业费用：</view>
+        <view class='txt'>{{infos.unit}}{{infos.manageTable.price}} / 平方英尺 / 月</view>
+      </view>
+      <view class='li flex'>
+        <view class='title'>制热方式：</view>
+        <view class='txt'>{{infos.manageTable.heating}}</view>
+      </view>
+      <view class='li flex'>
+        <view class='title'>制冷方式：</view>
+        <view class='txt'>{{infos.manageTable.cooling}}</view>
+      </view>
+      <view class='li flex'>
+        <view class='title'>物业设施：</view>
+        <view class='txt'>{{infos.manageTable.facilities}}</view>
+      </view>
+      <view class='li flex'>
+        <view class='title'>其他设施：</view>
+        <view class='txt'>{{infos.manageTable.other}}</view>
+      </view>
+    </view>
+  </block>
+  <block wx:if='{{infos.index == 2}}'>
+    <wxs src='../common/school.wxs' module='format'></wxs>
+    <view class='sch-list'>
+      <block wx:for='{{infos.schools}}' wx:key='id'>
+          <view class='line' wx:if='{{index > 0}}'></view>      
+          <view class='item'>
+            <view class='pic'>
+              <image src='{{prefix}}{{item.listImage}}' mode='widthFix'></image>
+            </view>
+            <view class='name'>{{item.name}}</view>
+            <view class='rank'>{{item.frank}}<text>年度排名</text></view>
+            <view class='sch flex fcen'>
+              <view>{{item.type == 'Public' ? '公立' : '私立'}}{{format.gradeFm(item.grade)}}</view>
+              <view class='star'>
+                <view class='bg flex'>
+                  <view class='bg1' style='width: {{item.rating / 10 * 100}}%'></view>
+                  <view class='bg2' style='width: {{(1 - item.rating / 10) * 100}}%'></view>
+                </view>
+                <image src='../../img/star1.png' class='img' mode='widthFix'></image>
+              </view>
+            </view>
+            <view class='info flex'>
+              <view class='left'>5年平均排名：</view>
+              <view>{{item.fyrank}}</view>
+            </view>
+            <view class='info flex'>
+              <view class='left'>学校地址：</view>
+              <view class='right'>{{item.address}}</view>
+            </view>
+            <view class='dis flex fcen'>
+              <image src='../../img/map2.png' mode='widthFix'></image>
+              <view>离房源{{item.distance}}公里</view>
+            </view>
+          </view>
+      </block>
+    </view>
+  </block>
+</view>

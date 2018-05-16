@@ -1,0 +1,57 @@
+<!--pages/agencyDetail/agencyDetail.wxml-->
+<view class='container'>
+  <view class='ad-hd'>
+    <view class='card flex fcen'>
+      <view class='avatar'>
+        <image src='{{info.userAvatar}}'></image>
+      </view>
+      <view class='infos flex1'>
+        <view class='info flex fcen'>
+          <view class='title'>经纪人</view>
+          <view class='con'>{{info.userName}}</view>
+        </view>
+        <view class='info flex fcen'>
+          <view class='title'>服务区域</view>
+          <view class='con'>{{city}}</view>zan 
+        </view>
+        <view class='info flex fcen'>
+          <view class='title'>所属公司</view>
+          <view class='con'>{{info.brokerCompanyName}}</view>
+        </view>
+        <view class='info flex fcen'>
+          <view class='title'>经纪 ID</view>
+          <view class='con'>{{info.brokerCode}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='other flex'>
+      <view class='item lang fcol spb fcen'>
+        <view class='title'>精通语言</view>
+        <view class='con'>{{info.lang}}</view>
+      </view>
+      <view class='item contact fcol spb fcen'>
+        <view class='title'>联系方式</view>
+        <view class='con'>{{info.mobile}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='ad-bd'>
+    <view class='title'>服务区域</view>
+    <view class='area-list flex fwrap'>
+      <view class='li' wx:for='{{info.regionCHList}}' wx:key='region'>
+        <text>{{item}}</text>
+        <text>{{info.regionENList[index]}}</text>
+      </view>
+    </view>
+
+     <view class='title'>个人介绍</view>
+    <view class='intro'>
+      <view class='content' wx:if='{{info.remark}}'>{{info.remark}}</view>
+      <view class='content' wx:else>暂无</view>
+    </view> 
+  </view>
+  <view class='ad-ft'>
+    <view class='btn' bindtap='call' data-mobile='{{info.countryCode}}{{info.mobile}}'>联系经纪人</view>
+  </view>
+</view>
+<view class='tips' wx:if='{{toast.show}}'>{{toast.title}}</view>

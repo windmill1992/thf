@@ -1,0 +1,39 @@
+<!--pages/ucenter/ucenter.wxml-->
+<view class='container'>
+  <view class='head' wx:if='{{!hasUserInfo && canIUse}}'>
+    <button open-type='getUserInfo' bindgetuserinfo='getUserInfo' class='login-btn'>授权登录</button>
+  </view>
+  <view class='head' wx:else>
+    <image src='{{userAvatar}}'></image>
+    <view class='nick'>{{nickName}}</view>
+  </view>
+  <view class='body'>
+    <view class='menu'>
+      <navigator url='/pages/histories/histories' class='li'>
+        <view class='box flex fcen spb'>
+          <view class='txt'>我的足迹</view>
+          <view class='more'></view>
+        </view>
+      </navigator>
+      <navigator url='/pages/appInfo/appInfo' class='li'>
+        <view class='box flex fcen spb'>
+          <view class='txt'>下载应用</view>
+          <view class='more'></view>
+        </view>
+      </navigator>
+      <button open-type='share' class='li btn'>
+        <view class='box flex fcen spb'>
+          <view class='txt'>推荐给好友</view>
+          <view class='more'></view>
+        </view>
+      </button>
+      <navigator url='/pages/concat/concat' class='li'>
+        <view class='box flex fcen spb'>
+          <view class='txt'>联系房管家</view>
+          <view class='more'></view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class='tips' wx:if='{{toast.show}}'>{{toast.title}}</view>
+</view>

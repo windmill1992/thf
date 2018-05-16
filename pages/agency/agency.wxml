@@ -1,0 +1,31 @@
+<!--pages/agency/agency.wxml-->
+<view class='container' wx:if='{{hasAgents}}'>
+  <!-- <view class='a-hd'>
+    <view class='sel' bindtap='selectCity'>
+      <view class='down'>城市选择</view>
+    </view>
+  </view> -->
+  <view class='a-bd'>
+    <view class='agent-list'>
+      <navigator url='/pages/agencyDetail/agencyDetail?id={{item.userId}}' wx:for='{{agents}}' wx:key='broker' class='item flex fcen spb'>
+        <view class='user flex fcen flex1'>
+          <view class='avatar'>
+            <image src='{{item.userAvatar}}'></image>
+          </view>
+          <view class='infos'>
+            <view class='name'>{{item.userName}}</view>
+            <view class='company'>{{item.brokerCompanyName}}</view>
+            <view class='info'>
+              <text class='lang'>{{item.lang}}</text>
+              <text class='num'>执照号：{{item.brokerCode}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='btn fshink0 flex fcen spc'><text>查看详情</text></view>
+      </navigator>
+    </view>
+		<view class='loadmore no' wx:if='{{!hasmore}}'>没有更多数据了</view>
+  </view>
+</view>
+<view class='no-data' wx:else>暂无该地区经纪人信息</view>
+<view class='tips' wx:if='{{toast.show}}'>{{toast.title}}</view>

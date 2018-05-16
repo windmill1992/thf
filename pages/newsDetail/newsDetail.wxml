@@ -1,0 +1,48 @@
+<!--pages/newsDetail/newsDetail.wxml-->
+<view class='container'>
+  <view class='nd-hd'>
+    <view class='title'>{{news.title}}</view>
+    <view class='infos flex spb fcen'>
+      <view class='res flex fcen'>
+        <view>{{news.source}}</view>
+        <view class='date'>{{news.date}}</view>
+      </view>
+      <view class='view-num flex fcen'>
+        <image src='../../img/eye.png'></image>
+        <view class='num'>{{news.viewcount}}</view>
+      </view>
+    </view>
+
+    <view class='content'>
+      <import src='/wxParse/wxParse.wxml'></import>
+      <template is='wxParse' data='{{wxParseData: newsContent.nodes}}'></template>
+    </view>
+  </view>
+  <view class='nd-bd' wx:if='{{hasRelevance}}'>
+    <view class='title-txt'>相关资讯</view>
+    <view class='news-list'>
+      <navigator url='/pages/newsDetail/newsDetail?newsId={{item.id}}' class='item' wx:for='{{relevance}}' wx:key='id'>
+        <view class='wrapper flex'>
+          <view class='infos flex1 fcol spb'>
+            <view class='title'>{{item.title}}</view>
+            <view class='info flex spb'>
+              <view class='left flex'>
+                <view class='source' wx:if='{{item.source != "淘海房"}}'>{{item.source}}</view>
+                <view class='source self' wx:else>{{item.source}}原创</view>
+                <view class='date'>{{item.date}}</view>
+              </view>
+              <view class='num flex fcen'>
+                <image src='../../img/eye.png'></image>
+                <text>{{item.viewcount}}</text>
+              </view>
+            </view>
+          </view>
+          <view class='pic fshink0'>
+            <image src='{{item.imgUrl}}' mode='aspectFill'></image>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>
+<view class='tips' wx:if='{{toast.show}}'>{{toast.title}}</view>

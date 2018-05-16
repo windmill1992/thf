@@ -1,0 +1,89 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='i-hd'>
+    <view class='banner'>
+      <swiper autoplay circular style='height: 360rpx;'>
+        <swiper-item class='item' wx:for='{{banners}}' wx:key='id' wx:if='{{index < 3}}'>
+          <image src='{{item.imgUrl}}' mode='widthFix' data-id='{{item.id}}' catchtap='navToDetail'></image>
+        </swiper-item>
+      </swiper>
+    </view>
+    <navigator url='/pages/selectCity/selectCity' class='map-wrapper'>
+      <view class='txt'>点击此处选择城市</view>
+      <view class='map flex fcen'>
+        <image src='../../img/map.png'></image>
+        <text>{{location}}</text>
+      </view>
+    </navigator>
+    <view class='nav-list flex'>
+      <block wx:if='{{unit != "C$"}}'>
+        <navigator url='/pages/chioceHouse/chioceHouse' open-type='switchTab' class='nav-item'>
+          <image src='../../img/buy.png' mode='aspectFit'></image>
+          <view class='txt'>买房</view>
+        </navigator>
+        <navigator url='/pages/rentHouse/rentHouse' class='nav-item'>
+          <image src='../../img/rent.png' mode='aspectFit'></image>
+          <view class='txt'>租房</view>
+        </navigator>
+      </block>
+      <block wx:else>
+        <navigator url='/pages/chioceHouse/chioceHouse' open-type='switchTab' class='nav-item'>
+          <image src='../../img/buy.png' mode='aspectFit'></image>
+          <view class='txt'>二手房</view>
+        </navigator>
+        <navigator url='/pages/newHouse/newHouse' class='nav-item'>
+          <image src='../../img/rent.png' mode='aspectFit'></image>
+          <view class='txt'>新房</view>
+        </navigator>
+      </block>
+      <navigator url='/pages/news/news' class='nav-item'>
+        <image src='../../img/news.png' mode='aspectFit'></image>
+        <view class='txt'>资讯</view>
+      </navigator>
+      <navigator url='/pages/agency/agency' class='nav-item'>
+        <image src='../../img/agent.png' mode='aspectFit'></image>
+        <view class='txt'>地产经纪</view>
+      </navigator>
+    </view>
+  </view>
+  <view class='i-bd'>
+    <view class='title'>热门推荐房源</view>
+    <view class='house-list'>
+      <view data-id='{{item.id}}' data-mslno='{{item.mslno}}' data-idx='{{index}}' bindtap='houseToDetail' class='item flex' wx:for='{{houseList}}' wx:key='id'>
+        <view class='pic fshink0 {{!item.floorSize ? "au" : ""}}'>
+          <image src='{{item.listImage}}' mode='aspectFill' lazy-load='true'></image>
+          <view class='tag' wx:if='{{item.marketTime}}'>{{item.marketTime}}</view>
+        </view>
+        <view class='infos flex1 flex spb fcen'>
+          <view class='left {{unit == "A$" ? "au" : "fcol spb"}}'>
+            <view class='name'>{{item.beds}}卧{{item.baths}}卫·{{item.buildType}}</view>
+            <view class='city'><text>{{item.cityZH}}</text><text>{{item.city}}</text></view>
+            <block wx:if='{{unit != "A$"}}'>
+              <view wx:if='{{item.floorSize}}'><text>房屋面积：{{item.floorSize}}平方英尺</text></view>
+              <view><text wx:if='{{item.builtIn != ""}}'>{{item.builtIn}}年建造</text></view>
+            </block>
+            <block wx:else>
+              <view><text wx:if='{{item.listedDate != ""}}'>{{item.listedDate}}</text></view>
+            </block>
+          </view>
+          <view class='right' wx:if='{{unit != "A$"}}'>
+            <view class='price'>{{unit}}{{item.price}}</view>
+            <view class='date'>{{item.listedDate}}</view> 
+          </view>
+          <view class='right' wx:else>
+            <block wx:if='{{item.avaPrice}}'>
+              <view class='price'>约{{unit}}{{item.avaPrice}}</view>
+              <view class='date'>({{item.priceMin}}~{{item.priceMax}})</view> 
+            </block>
+            <block wx:else>
+              <view class='price' wx:if='{{item.price != 0}}'>{{unit}}{{item.price}}</view>
+              <view class='price no-price' wx:else>咨询经纪</view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+		<view wx:if='{{houseList.length == 0}}' class='no-data'>您所在的城市暂无推荐房源！</view>
+  </view>
+</view>
+<view class='tips' wx:if='{{toast.show}}'>{{toast.title}}</view>

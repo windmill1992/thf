@@ -1,0 +1,15 @@
+<!--pages/concat/concat.wxml-->
+<view class='container'>
+  <view class='line'></view>
+  <view class='wrapper'>
+    <image src='../../img/beijing.jpg' class='bg'></image>
+    <image src='../../img/manager.png' class='qr' catchtap='preview'></image>
+    <view class='content'>
+      <view class='title'>房管家</view>
+      <view class='txt'>海外买房 找淘海房！</view>
+      <view class='txt'>无需中介，直接对接地产经纪！</view>
+      <view class='txt'>百分百真实在售房源！</view>
+      <view class='txt txt2'>保存图片至手机，加房管家咨询。</view>
+    </view>
+  </view>
+</view>

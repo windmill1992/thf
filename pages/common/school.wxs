@@ -1,0 +1,27 @@
+var Str = {
+	str2arr: function (str, div){
+		return str.split(div);
+	},
+	gradeFm: function(str){
+		var grade = '';
+		switch(str){
+			case 'Elementary':
+				grade = '小学'; break;
+			case 'Secondary':
+				grade = '中学'; break;
+      case 'Middle':
+				grade = '初中'; break;
+			case 'Junior':
+      case 'High':
+				grade = '高中'; break;
+			default: 
+				grade = '';
+		}
+		return grade;
+	}
+}
+
+module.exports = {
+	str2arr: Str.str2arr,
+	gradeFm: Str.gradeFm
+}

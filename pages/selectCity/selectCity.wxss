@@ -1,0 +1,53 @@
+/* pages/selectCity/selectCity.wxss */
+
+page {
+  height: 100%;
+  background: #f1f1f1;
+}
+
+.container {
+  height: 100%;
+  color: #333;
+}
+
+.title {
+  padding: 24rpx;
+  font-size: 30rpx;
+  color: #000;
+}
+
+.title image {
+  width: 56rpx;
+  height: 28rpx;
+  margin-right: 20rpx;
+}
+
+.item {
+  padding: 24rpx;
+  font-size: 28rpx;
+  background: #fff;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+
+.item .en {
+  font-size: 26rpx;
+  color: #666;
+  margin-left: 20rpx;
+}
+
+.no-data{
+  text-align: center;
+  color: #ffa200;
+  font-size: 28rpx;
+  margin: 100rpx 0;
+}

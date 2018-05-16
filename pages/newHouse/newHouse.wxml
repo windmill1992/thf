@@ -1,0 +1,90 @@
+<!--pages/newHouse/newHouse.wxml-->
+<view class='container'>
+  <view class='filter flex spb'>
+    <view class='item' bindtap='select' data-type='area'>
+      <text class='down'>{{area}}</text>
+    </view>
+    <view class='item' bindtap='select' data-type='price'>
+      <text class='down'>{{price}}</text>
+    </view>
+    <view class='item' bindtap='select' data-type='state'>
+      <text class='down'>{{state}}</text>
+    </view>
+    <view class='item' bindtap='select' data-type='sort'>
+      <text class='down'>{{sort}}</text>
+    </view>
+  </view>
+  <view class='house-list'>
+    <navigator url='/pages/newHouseDetail/newHouseDetail?hid={{item.id}}' class='item' hover-class='none' wx:for='{{houseList}}' wx:key='id'>
+      <view class='title'><block wx:if='{{item.nameChinese}}'>{{item.nameChinese}} </block>{{item.nameEnglish}}</view>
+      <view class='con flex'>
+        <view class='pic'>
+          <image src='{{item.listImage}}' mode='aspectFill'></image>
+        </view>
+        <view class='info fcol spb'>
+          <view class='top'>
+            <view class='sale' wx:if='{{item.startSaleDate}}'>开盘时间：{{item.startSaleDate}}</view>
+            <view class='city'>{{item.cityZH}} {{item.city}}</view>
+            <view class='price'>{{unit}}{{item.price}}<text>起</text></view>
+          </view>
+          <view class='bot flex'>
+            <view class='tags tag1'>{{item.buildType}}</view>
+            <view class='tags tag2'>{{item.stateCN}}</view>
+            <view class='tags tag3'>{{item.renoLevel}}</view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class='loadmore no' wx:if='{{!hasmore && !noData}}'>没有更多数据了</view>
+  <view class='loadmore no' wx:if='{{noData}}'>未查询到<block wx:if='{{lt == 1}}'>所在城市的</block>数据！</view>
+</view>
+<view class='dialog-box box1 {{box == "area" ? "show-1":""}}'>
+  <view class='mask' catchtouchend='hideDialog'></view>
+  <view class='content'>
+    <view class='list'>
+      <view class='item flex spb {{opts[0].sel == "" ? "on":""}}' catchtap='selOption' data-arg='' data-cn=''>
+        <view class='option'>不限</view>
+        <view class='check'><image src='../../img/check.png'></image></view>
+      </view>
+      <view class='item flex spb {{opts[0].sel == item.chineselng ? "on":""}}' catchtap='selOption' data-cn='{{item.chineselng}}' data-arg='{{item.englishlng}}' wx:for='{{cityList}}' wx:key='mslno'>
+        <view class='option'>{{item.chineselng}}({{item.englishlng}})</view>
+        <view class='check'><image src='../../img/check.png'></image></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='dialog-box box2 {{box == "price" ? "show-1":""}}'>
+  <view class='mask' catchtouchend='hideDialog'></view>
+  <view class='content'>
+    <view class='list'>
+      <view class='item flex spb {{opts[2].sel == item.cn ? "on":""}}' catchtap='selOption' data-arg='{{item.area}}' data-cn='{{item.cn}}' wx:for='{{prices}}' wx:key='price'>
+        <view class='option'>{{item.cn ?item.cn : '不限'}}</view>
+        <view class='check'><image src='../../img/check.png'></image></view>
+      </view>
+    </view>
+  </view>
+</view> 
+<view class='dialog-box box3 {{box == "state" ? "show-1":""}}'>
+  <view class='mask' catchtouchend='hideDialog'></view>
+  <view class='content'>
+    <view class='list'>
+      <view class='item flex spb {{opts[1].sel == item.cn ? "on":""}}' catchtap='selOption' data-arg='{{item.id}}' data-cn='{{item.cn}}' wx:for='{{states}}' wx:key='state'>
+        <view class='option'>{{item.cn ? item.cn : '不限'}}</view>
+        <view class='check'><image src='../../img/check.png'></image></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='dialog-box box4 {{box == "sort" ? "show-1":""}}'>
+  <view class='mask' catchtouchend='hideDialog'></view>
+  <view class='content'>
+    <view class='list'>
+      <view class='item flex spb {{opts[1].sel == item.name ? "on":""}}' catchtap='selOption' data-arg='{{item.dir}},{{item.field}}' data-cn='{{item.name}}' wx:for='{{sorts}}' wx:key='sort'>
+        <view class='option'>{{item.name}}</view>
+        <view class='check'><image src='../../img/check.png'></image></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='tips' wx:if='{{toast.show}}'>{{toast.title}}</view>

@@ -1,0 +1,30 @@
+<!--pages/selectCity/selectCity.wxml-->
+<view class='container'>
+  <view class='title'>当前定位城市</view>
+  <view class='city-list'>
+    <view class='item flex fcen' bindtap='setCity' data-city='{{location}}' data-code='{{code}}' data-pos='1'>
+      <image src='../../img/pos.png' mode='widthFix'></image>
+      <view wx:if='{{location}}'>{{location}}</view>
+    </view>
+  </view>
+  <block wx:if='{{!noRegion}}'>
+    <block wx:for='{{regions}}' wx:key='countryCode'>
+      <view class='title flex fcen' data-code='{{item.countryCode}}'>
+        <image wx:if='{{item.countryCode == "ca"}}' src='../../img/canada.png' mode='widthFix'></image>
+        <image wx:elif='{{item.countryCode == "us"}}' src='../../img/usa.png' mode='widthFix'></image>
+        <image wx:elif='{{item.countryCode == "au"}}' src='../../img/austrilia.png' mode='widthFix'></image>
+        <view>{{item.countryName}}</view>
+      </view>
+      <view class='city-list'>
+        <view class='item' wx:for='{{item.regions}}' wx:key='code' wx:for-item='city' bindtap='setCity' data-city='{{city.chineselng}}' data-code='{{city.code}}'>
+          <text>{{city.chineselng}}</text>
+          <text class='en'>{{city.englishlng}}</text>
+        </view>
+      </view>
+    </block>
+  </block>
+  <block wx:else>
+    <navigator url='/pages/index/index' open-type='swithcTab' class='no-data'>未查询到国家和大区，请点击返回重试！</navigator>
+  </block>
+</view>
+<view class='tips' wx:if='{{toast.show}}'>{{toast.title}}</view>

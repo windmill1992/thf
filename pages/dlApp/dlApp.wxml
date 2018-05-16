@@ -1,0 +1,10 @@
+<!--pages/dlApp/dlApp.wxml-->
+<view class='container'>
+  <image class='bg' src='../../img/beijing3.png'></image>
+  <view class='wrapper fcol fcen'>
+    <image src='../../img/app.png'></image>
+    <view class='txt1'>海外买房，就上淘海房</view>
+    <view class='txt2'>扫描二维码，下载淘海房APP</view>
+    <view class='txt2'>或者APP STORE搜索淘海房下载</view>
+  </view>
+</view>

@@ -1,0 +1,231 @@
+<!--pages/rentHouseDetail/rentHouseDetail.wxml-->
+<view class='container'>
+  <view class='bhd-hd'>
+    <view class='swiper-wrapper'>
+      <swiper class='swiper' bindchange='getCur'>
+        <swiper-item class='item' wx:for='{{infos.images}}' wx:key='img'>
+          <image src='{{item}}' bindtap='previewImg' mode='aspectFill'></image>
+        </swiper-item>
+      </swiper>
+      <view class='page'>{{cur + 1}}/{{infos.images.length}}</view>
+    </view>
+    <view class='infos'>
+      <view class='info flex fcen spc'>
+        <view class='txt'>{{infos.cityZH}}</view>
+        <view class='txt'>{{infos.buildingType == 0 ? '独立屋' : (infos.buildingType == 1 ? '排屋' : '公寓')}}</view>
+        <view class='txt'>{{infos.beds}}卧{{infos.baths}}卫</view>
+      </view>
+      <view class='price'>
+        <view class='txt1' wx:if='{{infos.priceMin}}'>{{infos.priceMin}}-{{infos.priceMax}}<text class='unit'>{{unit}}元</text></view>
+        <view class='txt1' wx:else>{{infos.price}}<text class='unit'>{{unit}}元/月</text></view>
+        <view class='cny'>(约合¥{{infos.priceCNY}})</view>
+      </view>
+      <block wx:if='{{infos.priceTable.length > 0}}'>
+        <view class='his-price' bindtap='showHisPrice'>历史价格</view>
+        <view class='his-wrapper flex' wx:if='{{showHis}}'>
+          <view class='item'>
+            <view class='th'>事件</view>
+            <view class='td flex fcen {{index == 0 ? "first":""}}' wx:for='{{infos.priceTable}}' wx:key='tab1'>
+              <view class='icon'>
+                <image src='../../img/cir-on.png' wx:if='{{index == 0}}'></image>
+                <image src='../../img/cir.png' wx:else></image>
+              </view>
+              <view>{{item.event}}</view> 
+            </view>
+          </view>
+          <view class='item'>
+            <view class='th'>价格</view>
+            <view class='td {{index == 0 ? "first":""}}' wx:for='{{infos.priceTable}}' wx:key='tab2'>{{unit2}}{{item.price}}</view>
+          </view>
+          <view class='item'>
+            <view class='th'>日期</view>
+            <view class='td {{index == 0 ? "first":""}}' wx:for='{{infos.priceTable}}' wx:key='tab3'>{{item.day}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='bhd-bd'>
+    <view class='navs flex'>
+       <view class='nav-item {{idx == 0 ? "on":""}}' data-idx='0' bindtap='changeTab'>
+        <view class='txt'>基本信息</view>
+      </view>
+      <view class='nav-item {{idx == 1 ? "on":""}}' data-idx='1' bindtap='changeTab'>
+        <view class='txt'>详情信息</view>
+      </view>
+    </view>
+    <view class='info-box baseinfo {{idx == 0 ? "show":""}}'>
+      <view class='li flex'>
+        <view class='left fshink0'>上市日期：</view>
+        <view class='right flex1'>{{infos.listedDate}}
+          <text wx:if='{{infos.marketDay > 0}}'>（上市{{infos.marketDay}}天）</text>
+					<text wx:else>（今日上市）</text>
+        </view>
+      </view>
+			<view class='li flex'>
+        <view class='left fshink0'>房屋地址：</view>
+        <view class='right flex1'>{{infos.address}}</view>
+      </view>
+      <view class='li flex' wx:if='{{infos.floorSize}}'>
+        <view class='left fshink0'>房屋面积：</view>
+        <view class='right flex1'>{{infos.floorSize}}平方英尺<text>（约合{{infos.floorSizeCN}}平方米）</text></view>
+      </view>
+      <view class='li flex' wx:if='{{infos.landSize}}'>
+        <view class='left fshink0'>土地面积：</view>
+        <view class='right flex1'>{{infos.landSize}}平方英尺<text>（约合{{infos.landSizeCN}}平方米）</text></view>
+      </view>
+      <view class='li flex' wx:if='{{infos.parking}}'>
+        <view class='left fshink0'>停车状况：</view>
+        <view class='right flex1'>{{infos.parking}}</view>
+      </view>
+      <view class='li flex' wx:if='{{infos.openHouse[0].startDate}}'>
+        <view class='left fshink0'>开 放 日 ：</view>
+        <view class='right flex1'>{{infos.openHouse[0].startDate}}-{{infos.openHouse[0].endDate}}</view>
+      </view>
+      <view class='li flex' wx:if='{{infos.pets}}'>
+        <view class='left fshink0'>允许宠物：</view>
+        <view class='right flex1'>{{infos.pets}}</view>
+      </view>
+      
+      <view class='li flex' wx:if='{{infos.deposit != 0}}'>
+        <view class='left fshink0'>押    金：</view>
+        <view class='right flex1'>{{infos.deposit}}{{unit}}元</view>
+      </view>
+      <view class='li flex' wx:if='{{infos.dateAvailable}}'>
+        <view class='left fshink0'>有效起始日：</view>
+        <view class='right flex1'>{{infos.dateAvailable}}</view>
+      </view>
+    </view>
+    <view class='info-box detailinfo {{idx == 1 ? "show":""}}'>
+			<view class='li flex' wx:if='{{infos.houseFacilities}}'>
+        <view class='left fshink0'>屋内设施：</view>
+        <view class='right flex1'>{{infos.houseFacilities}}</view>
+      </view>
+			<view class='li flex' wx:if='{{infos.fireproofing}}'>
+        <view class='left fshink0'>防火设施：</view>
+        <view class='right flex1'>{{infos.fireproofing}}</view>
+      </view>
+      <view class='li flex' wx:if='{{infos.postCode}}'>
+        <view class='left fshink0'><text>邮     编：</text></view>
+        <view class='right flex1'>({{infos.state}}) {{infos.postCode}}</view>
+      </view>
+			<view class='desc' wx:if='{{infos.description}}'>
+				<view class='top flex spb fcen'>
+					<view class='left'>房屋描述：</view>
+					<view class='look {{!mask ? "down":"up"}} flex fcen' bindtap='lookmore' wx:if='{{long}}'>{{!mask ? "展开":"收起"}}</view>
+				</view>
+				<view class='con' style='height: {{mask ? oriH:height}}'>{{infos.description}}<view class='mask' wx:if='{{!mask && long}}'></view></view>
+			</view>
+    </view>
+
+    <!-- <view class='map-pic'>
+      <image src='' mode='widthFix'></image>
+    </view> -->
+
+    <view class='wrapper district'>
+      <view class='title flex fcen'>
+        <view class='line'></view>
+        <view class='txt'>所属学区</view>
+      </view>
+      <view class='dis-list' wx:if='{{infos.schools && infos.schools.length > 0}}'>
+				<wxs src='../common/school.wxs' module='format'></wxs>
+        <view class='item flex fcen' wx:for='{{infos.schools}}' wx:key='sch'>
+          <view class='left fshink0 fcol fcen'>
+            <block wx:if='{{unit2 != "$"}}'>
+              <view class='num bg1'>{{item.ranking}}</view>
+              <view class='rank'>总排名{{format.str2arr(item.fyrank, '/')[0]}}</view>
+            </block>
+            <block wx:else>
+              <view class='num bg1'>{{item.rating}}</view>
+              <view class='rank'>总分10分</view>
+            </block>
+          </view>
+          <view class='right flex1'>
+            <view class='name'>{{item.name}}</view>
+            <view class='level flex'>年级：<block wx:if='{{unit2 != "$"}}'>{{format.gradeFm(item.grade)}}</block><block wx:else>{{item.gradeLevel}}({{format.gradeFm(item.grade)}})</block>
+              <image src='../../img/gongli.png' class='state' wx:if='{{item.type == "Public"}}'></image>
+              <image src='../../img/sili.png' class='state' wx:else></image>
+            </view>
+            <view class='distance flex fcen'>
+              <image src='../../img/s-pos.png' class='pos' mode='widthFix'></image>
+              <view class='txt2'>离房源{{item.distance}}公里</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else class='no-data'>暂无数据</view>
+    </view>
+
+    <!-- <view class='wrapper linkman'>
+      <view class='title flex fcen'>
+        <view class='line'></view>
+        <view class='txt'>租房联系人</view>
+      </view>
+      <view class='man-list'>
+        <view class='item flex fcen spb'>
+          <view class='avatar fshink0'>
+            <image src='../../img/avatar.png'></image>
+          </view>
+          <view class='infos flex1'>
+            <view class='nick'>Kaven leng <text class='prof'>经纪人</text></view>
+            <view class='txt'>公司：box street properties LLC</view>
+            <view class='txt'>电话：(203)962-1809</view>
+          </view>
+          <view class='call'>
+            <image src='../../img/tel.png'></image>
+          </view>
+        </view>
+      </view>
+      <view class='txt2'>联系对方时请说明是在淘海房上看到的，谢谢！</view>
+    </view> -->
+
+    <view class='wrapper similar'>
+       <view class='title flex fcen'>
+        <view class='line'></view>
+        <view class='txt'>相似房源</view>
+      </view>
+      <view class='house-list'>
+        <view bindtap='navToDetail' data-id='{{item.id}}' data-mslno='{{item.mslno}}' wx:for='{{similars}}' wx:key='sim' class='item flex'>
+          <view class='pic fshink0 {{!item.floorSize ? "au" : ""}}'>
+            <image src='{{item.imgUrl}}' mode='aspectFill'></image>
+            <view class='tag' wx:if='{{item.marketTime}}'>{{item.marketTime}}</view>
+          </view>
+          <view class='infos flex1 flex spb fcen'>
+            <view class='left'>
+              <view class='name'>{{item.beds}}卧{{item.baths}}卫·{{item.buildType}}</view>
+              <view class='city'>
+                <text>{{item.cityZH}}</text>
+                <text>{{item.city}}</text>
+              </view>
+              <view wx:if='{{item.floorSize}}'>
+                <text>房屋面积：{{item.floorSize}}平方英尺</text>
+              </view>
+              <view wx:if='{{item.listedDate && unit2 == "A$"}}'>
+                <text>{{item.listedDate}}</text>
+              </view>
+            </view>
+            <view class='right' wx:if='{{unit != "A$"}}'>
+              <view class='price'>{{unit}}{{item.price}}/月</view>
+              <view class='date'>{{item.listedDate}}</view> 
+            </view>
+            <view class='right' wx:else>
+              <block wx:if='{{item.avaPrice}}'>
+                <view class='price'>约{{unit}}{{item.avaPrice}}/周</view>
+                <view class='date'>({{item.priceMin}}~{{item.priceMax}})</view> 
+              </block>
+              <block wx:else>
+                <view class='price' wx:if='{{item.price != 0}}'>{{unit}}{{item.price}}/周</view>
+                <view class='price no-price' wx:else>咨询经纪</view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='bhd-ft flex'>
+    <navigator url='/pages/agency/agency' class='btn tel'>联系经纪看房</navigator>
+    <navigator url='/pages/concat/concat' class='btn wx'>微信咨询</navigator>
+  </view>
+</view>
