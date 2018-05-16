@@ -214,7 +214,7 @@ Page({
 						that.setData({ houseList: [] });
 					}
 				} else {
-					that.showToast(res.data.resultMsg);
+					//that.showToast(res.data.resultMsg);
           that.setData({ houseList: [] });
 				}
 			}, fail() {
