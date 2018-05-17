@@ -494,7 +494,7 @@ page {
 .bhd-ft .btn.wx {
   background: #fff;
   color: #ffa200;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #ffa200;
 }
 
 .no-data{
