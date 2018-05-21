@@ -48,7 +48,7 @@ App({
     resUrl: {
       photo: 'http://images.photo.taohaifang.com/',          //头像 
       rentHouse: 'http://images.renthouse.taohaifang.com/',  //租房
-      school: 'http://images.school.taohaifang.com/',  //租房
+      school: 'http://images.school.taohaifang.com/',  			 //租房
       house: 'http://images.house.taohaifang.com/',          //房子
       banner: 'http://images.taohaifang.com/',               //轮播
       encImg: 'http://images.taohaifang.com/'                //资讯百科
