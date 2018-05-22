@@ -295,6 +295,13 @@ Page({
 		this.getBanner();
 		this.getHouseList();
 	},
+	onShareAppMessage: function(){
+		return {
+			title: '淘海房-海外房产服务平台美国、加拿大、澳洲买房租房，就上淘海房！',
+			path: '/pages/index/index',
+			imageUrl: '../../img/share.jpg'
+		}
+	},
 	showToast: function (txt) {
 		const that = this;
 		let obj = {};
