@@ -12,11 +12,15 @@ Page({
   },
   onLoad: function (options) {
     if(options.hid){
+			let scene = wx.getStorageSync('scene');
       let code = wx.getStorageSync('regionCode');
       let unit = '', unit2 = '';
-      if(!code){
-        code = 1;
-      }else{
+			if (scene == 1007 || scene == 1008) {
+				code = options.code;
+				wx.setStorageSync('regionCode', code);
+				wx.setStorageSync('city', options.city);
+			}
+      if(code){
         let c = code.substr(0, 2);
         unit = c == 'ca' ? '加' : (c == 'us' ? '美' : '澳');
         unit2 = c == 'ca' ? 'C$' : (c == 'us' ? '$' : 'A$');
@@ -148,6 +152,16 @@ Page({
       url: '/pages/newHouseType/newHouseType'
     });
   },
+	onShareAppMessage: function () {
+		let dd = this.data;
+		let code = wx.getStorageSync('regionCode');
+		let city = wx.getStorageSync('city');
+		return {
+			title: '我看中了这套房子，你怎么看？',
+			path: '/pages/newHouseDetail/newHouseDetail?hid=' + dd.hid + '&code=' + code + '&city=' + city,
+			imageUrl: ''
+		}
+	},
   showToast: function (txt) {
     const that = this;
     let obj = {};

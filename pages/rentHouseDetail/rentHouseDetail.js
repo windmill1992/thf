@@ -14,7 +14,13 @@ Page({
     similars: []
   },
   onLoad: function (options) {
+		let scene = wx.getStorageSync('scene');
     let code = wx.getStorageSync('regionCode');
+		if (scene == 1007 || scene == 1008) {
+			code = options.code;
+			wx.setStorageSync('regionCode', code);
+			wx.setStorageSync('city', options.city);
+		}
     let unit = '', unit2 = '';
     if (code) {
       code = code.substr(0, 2);
@@ -211,6 +217,16 @@ Page({
       url: '/pages/rentHouseDetail/rentHouseDetail?hid=' + id + '&mslno=' + mslno
     });
   },
+	onShareAppMessage: function () {
+		let dd = this.data;
+		let code = wx.getStorageSync('regionCode');
+		let city = wx.getStorageSync('city');
+		return {
+			title: '我看中了这套房子，你怎么看？',
+			path: '/pages/buyHouseDetail/buyHouseDetail?hid=' + dd.hid + '&code=' + code + '&mslno=' + dd.mslno + '&city=' + city,
+			imageUrl: ''
+		}
+	},
   showToast: function (txt) {
     const that = this;
     let obj = {};

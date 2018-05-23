@@ -111,7 +111,8 @@
 					"id": 12,
 					"name": "buyhouse",
 					"pathName": "pages/buyHouseDetail/buyHouseDetail",
-					"query": "hid=5a5c7dbce63003d62444e5e8&mslno=R2231826"
+					"query": "hid=5b00f4efde5ca51278f2122b&mslno=R2269873&code=ca0201&city=温哥华",
+					"scene": "1007"
 				},
 				{
 					"id": 13,
