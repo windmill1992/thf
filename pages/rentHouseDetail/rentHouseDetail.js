@@ -223,7 +223,7 @@ Page({
 		let city = wx.getStorageSync('city');
 		return {
 			title: '我看中了这套房子，你怎么看？',
-			path: '/pages/buyHouseDetail/buyHouseDetail?hid=' + dd.hid + '&code=' + code + '&mslno=' + dd.mslno + '&city=' + city,
+			path: '/pages/rentHouseDetail/rentHouseDetail?hid=' + dd.hid + '&code=' + code + '&mslno=' + dd.mslno + '&city=' + city,
 			imageUrl: ''
 		}
 	},
