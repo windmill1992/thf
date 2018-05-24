@@ -1,7 +1,7 @@
 <!--pages/appInfo/appInfo.wxml-->
 <view class='container'>
   <view class='pic'>
-    <image src='../../img/beijing2.png' class='bg'></image>
+    <image src='http://images.taohaifang.com/infomation/ea98e496-3062-43fa-8fbe-5fed379458a4' class='bg'></image>
     <view class='wrapper fcol fcen'>
       <image src='../../img/logo.png' class='logo'></image>
       <image src='../../img/thftxt.png' class='txt'></image>
@@ -12,7 +12,7 @@
     <view>淘海房提供美国、加拿大、澳大利亚十余万套海外真实房源，涵盖海量海外学区房和房源周边配套信息。通过淘海房，用户不再担心受虚假房源困扰，找到真实在售的海外房源。淘海房不介入用户交易，以中立的平台，致力于提升用户体验。</view>
   </view>
   <view class='qrcode'>
-    <image src='../../img/app.png'></image>
+    <image src='http://images.taohaifang.com/infomation/e82a869e-4834-447f-bf00-d411a9f24298'></image>
     <view>
       <view class='adv'>海外买房，就上淘海房！</view>
       <view class='scan'>扫描二维码，下载淘海房APP！</view>

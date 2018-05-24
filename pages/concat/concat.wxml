@@ -2,8 +2,8 @@
 <view class='container'>
   <view class='line'></view>
   <view class='wrapper'>
-    <image src='../../img/beijing.jpg' class='bg'></image>
-    <image src='../../img/manager.png' class='qr' catchtap='preview'></image>
+    <image src='http://images.taohaifang.com/infomation/88128291-000f-4386-8ac2-9a572ce3132b' class='bg'></image>
+    <image src='http://images.taohaifang.com/infomation/a4934d67-0368-408b-ba20-7aef21c905f5' class='qr' catchtap='preview'></image>
     <view class='content'>
       <view class='title'>房管家</view>
       <view class='txt'>海外买房 找淘海房！</view>
