@@ -2,7 +2,7 @@
 <view class='container'>
   <image class='bg' src='http://images.taohaifang.com/infomation/300dc9c2-f18f-4fb2-b716-18a152bceaa0'></image>
   <view class='wrapper fcol fcen'>
-    <image src='http://images.taohaifang.com/infomation/e82a869e-4834-447f-bf00-d411a9f24298'></image>
+    <image src='http://images.taohaifang.com/infomation/e82a869e-4834-447f-bf00-d411a9f24298' catchtap='preview'></image>
     <view class='txt1'>海外买房，就上淘海房</view>
     <view class='txt2'>扫描二维码，下载淘海房APP</view>
     <view class='txt2'>或者APP STORE搜索淘海房下载</view>
