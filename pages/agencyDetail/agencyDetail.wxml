@@ -12,7 +12,7 @@
         </view>
         <view class='info flex fcen'>
           <view class='title'>服务区域</view>
-          <view class='con'>{{city}}</view>zan 
+          <view class='con'>{{city}}</view> 
         </view>
         <view class='info flex fcen'>
           <view class='title'>所属公司</view>

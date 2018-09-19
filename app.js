@@ -1,18 +1,10 @@
 //app.js
 App({
   onLaunch: function (options) {
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
+    
 		let scene = options.scene;
 		wx.setStorageSync('scene', scene);
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
+    
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -47,12 +39,12 @@ App({
       'token': ''
     },
     resUrl: {
-      photo: 'http://images.photo.taohaifang.com/',          //头像 
-      rentHouse: 'http://images.renthouse.taohaifang.com/',  //租房
-      school: 'http://images.school.taohaifang.com/',  			 //租房
-      house: 'http://images.house.taohaifang.com/',          //房子
-      banner: 'http://images.taohaifang.com/',               //轮播
-      encImg: 'http://images.taohaifang.com/'                //资讯百科
+			photo: 'http://photo.muzhao888.com/',          //头像 
+			rentHouse: 'http://renthouse.muzhao888.com/',  //租房
+			school: 'http://house.muzhao888.com/',  			 //租房
+			house: 'http://house.muzhao888.com/',          //房子
+			banner: 'http://images.muzhao888.com/',        //轮播
+			encImg: 'http://images.muzhao888.com/'         //资讯百科
     },
 		amap: {
 			key: 'e551fa08715165f44c75d76eeb1dc46f'

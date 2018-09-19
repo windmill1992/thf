@@ -56,7 +56,7 @@ Page({
     return {
 			title: '淘海房-海外房产服务平台美国、加拿大、澳洲买房租房，就上淘海房！',
 			path: '/pages/index/index',
-			imageUrl: 'http://images.taohaifang.com/infomation/85db5981-4937-452a-8f4f-a67360db8be9'
+			imageUrl: 'http://images.muzhao888.com/infomation/85db5981-4937-452a-8f4f-a67360db8be9'
     }
   },
   showToast: function (txt) {

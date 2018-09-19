@@ -8,7 +8,7 @@ Page({
 	},
 	preview: function () {
 		wx.previewImage({
-			urls: ['http://images.taohaifang.com/infomation/e82a869e-4834-447f-bf00-d411a9f24298'],
+			urls: ['http://images.muzhao888.com/infomation/e82a869e-4834-447f-bf00-d411a9f24298'],
 		})
 	}
 })
